@@ -8,7 +8,6 @@ body {
 }
 
 main {
-  height: 90%;
   padding: 1em;
   padding-top: 3em;
   margin-left: 15em;
@@ -39,17 +38,44 @@ nav a {
   font-weight: normal;
   padding: 1em 3em;
   cursor: pointer;
+  transition: .15s;
 }
 
 nav a:hover {
   background-color: black;
+  transition: .15s;
+}
+
+th {
+  display: none;
+}
+
+td {
+  padding: none;
+}
+
+textarea {
+  font-family: Patua One;
+  width: 50em;
+  height: 10em;
+  margin-left: -0.2em;
+  resize: none;
+}
+
+input[type=submit] {
+  color: black;
+  padding: 1em;
+  font-family: Patua One;
+  border: 0.2em solid black;
+  transition: 0.1s;
+}
+
+input[type=submit]:hover {
+  background-color: black;
+  color: white;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0em;
   color: white;
   font: Patua One;
   background: black;
