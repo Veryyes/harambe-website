@@ -17,6 +17,8 @@ nav {
 }
 
 nav a {
+  text-decoration: none;
+  border: none;
   display: inline-block;
   color: white;
   font-weight: normal;
