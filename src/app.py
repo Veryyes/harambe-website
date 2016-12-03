@@ -9,8 +9,7 @@ urls = (
 app = web.application(urls, globals())
 
 entry = form.Form(
-	form.Textbox("remember"),
-	form.Button("submit")
+	form.Textarea("remember")
 )
 
 class index:
