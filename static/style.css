@@ -6,8 +6,18 @@ body {
   background-color: #EEE;
 }
 
+main {
+  margin: 1em 20em;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header {
-  height: 8em;
+  height: 6em;
 }
 
 nav {
@@ -22,7 +32,7 @@ nav a {
   display: inline-block;
   color: white;
   font-weight: normal;
-  padding: 1em 1em;
+  padding: 1em 3em;
 }
 
 nav a:hover {
