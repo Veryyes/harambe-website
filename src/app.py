@@ -6,7 +6,7 @@ import urllib
 render = web.template.render('templates/', base='layout')
 
 urls = (
-	'/','index', '/about.html', 'about', '/memories.html', 'memories', '/tragedy.html', 'tragedy'
+	'/','index', '/about.html', 'about', '/memories.html', 'memories'
 )
 
 db = web.database(dbn='mysql', user='harambe', pw='love', db='harambe')
@@ -14,11 +14,7 @@ db = web.database(dbn='mysql', user='harambe', pw='love', db='harambe')
 app = web.application(urls, globals())
 
 entry = form.Form(
-<<<<<<< HEAD
-	form.Textarea("remember")
-=======
 	form.Textarea("message"),
->>>>>>> master
 )
 
 class index:
@@ -33,14 +29,8 @@ class memories:
 	def GET(self):
 		table = db.select('memories')
 		remember = entry()
-<<<<<<< HEAD
-		#print remember.render()
 		return render.memories(remember, table)
-=======
-		comment = web.data()[8:]
-		
-		return render.memories(remember)
->>>>>>> a176d45e7148400ce0a6a6a4500b053e8754cc2c
+
 
 	def POST(self):
 		
@@ -54,10 +44,6 @@ class memories:
 		n = db.insert('memories', time=date,name='n/a',message=comment)
 		raise web.seeother('/memories.html')
 		#return render.memories(remember, table)
-
-class tragedy:
-	def GET(self):
-		return render.tragedy()
 
 if __name__=="__main__":
 	app.run()
