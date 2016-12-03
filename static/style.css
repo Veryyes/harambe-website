@@ -36,6 +36,7 @@ nav a {
   color: white;
   font-weight: normal;
   padding: 1em 3em;
+  cursor: pointer;
 }
 
 nav a:hover {
