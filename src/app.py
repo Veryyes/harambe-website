@@ -14,7 +14,11 @@ db = web.database(dbn='mysql', user='harambe', pw='love', db='harambe')
 app = web.application(urls, globals())
 
 entry = form.Form(
+<<<<<<< HEAD
+	form.Textarea("remember")
+=======
 	form.Textarea("message"),
+>>>>>>> master
 )
 
 class index:
@@ -29,8 +33,14 @@ class memories:
 	def GET(self):
 		table = db.select('memories')
 		remember = entry()
+<<<<<<< HEAD
 		#print remember.render()
 		return render.memories(remember, table)
+=======
+		comment = web.data()[8:]
+		
+		return render.memories(remember)
+>>>>>>> a176d45e7148400ce0a6a6a4500b053e8754cc2c
 
 	def POST(self):
 		

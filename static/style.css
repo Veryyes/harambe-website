@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 body {
+  height: 100vh;
   margin: 0;
   padding: 0;
-  padding-top: 2em;
   font-family: Patua One;
   background-color: #EEE;
 }
 
 main {
   padding: 1em;
-  margin-left: 20em;
-  margin-right: 20em;
+  padding-top: 3em;
+  margin-left: 15em;
+  margin-right: 15em;
   box-shadow: 0 0 10px #333;
 }
 
@@ -37,14 +38,44 @@ nav a {
   font-weight: normal;
   padding: 1em 3em;
   cursor: pointer;
+  transition: .15s;
 }
 
 nav a:hover {
   background-color: black;
+  transition: .15s;
+}
+
+th {
+  display: none;
+}
+
+td {
+  padding: none;
+}
+
+textarea {
+  font-family: Patua One;
+  width: 50em;
+  height: 10em;
+  margin-left: -0.2em;
+  resize: none;
+}
+
+input[type=submit] {
+  color: black;
+  padding: 1em;
+  font-family: Patua One;
+  border: 0.2em solid black;
+  transition: 0.1s;
+}
+
+input[type=submit]:hover {
+  background-color: black;
+  color: white;
 }
 
 footer {
-  padding: 1em;
   color: white;
   font: Patua One;
   background: black;
