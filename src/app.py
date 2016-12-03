@@ -9,8 +9,7 @@ urls = (
 app = web.application(urls, globals())
 
 entry = form.Form(
-	form.Textbox("remember"),
-	form.Button("submit")
+	form.Textarea("message"),
 )
 
 class index:
@@ -25,6 +24,12 @@ class memories:
 	def GET(self):
 		remember = entry()
 		#print remember.render()
+		return render.memories(remember)
+
+	def POST(self):
+		remember = entry()
+		comment = web.data()[8:]
+		
 		return render.memories(remember)
 
 class tragedy:
