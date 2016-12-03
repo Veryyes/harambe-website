@@ -1,4 +1,10 @@
-$def with (remember)
+$def with (remember, table)
 <form name="remember" method="post">
 $:remember.render()
+<input type="submit"/>
 </form>
+<hr>
+<ul>
+$for entry in table:
+	<li>$entry.message</li>
+</ul>	
