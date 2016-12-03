@@ -23,7 +23,8 @@ class about:
 class memories:
 	def GET(self):
 		remember = entry()
-		#print remember.render()
+		comment = web.data()[8:]
+		
 		return render.memories(remember)
 
 class tragedy:
