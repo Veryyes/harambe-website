@@ -29,13 +29,27 @@ class memories:
 	def GET(self):
 		table = db.select('memories')
 		remember = entry()
-		return render.memories(remember, table)
+		len_table = len(table)
+		posts = []
+		i = 0
+		for p in table:
+			posts.append(p.message)
+		posts.reverse()
+		another_list = []
+		for p in posts:
+			if(i>7):
+				break;
+			another_list.append(p)
+			i+=1
+		return render.memories(remember, another_list)
 
 
 	def POST(self):
 		
 		remember = entry()
 		comment = web.data()[8:]
+		print comment
+		comment = comment.replace('+',' ')
 		print comment
 		comment = urllib.unquote(comment).decode('ascii')
 		print comment

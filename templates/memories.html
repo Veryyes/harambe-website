@@ -1,4 +1,4 @@
-$def with (remember, table)
+$def with (remember, another_list)
 <h1 style="text-align: center">We remember Harambe</h1>
 <h2>Tell us how <u>you</u> remember Harambe.</h2>
 
@@ -11,7 +11,7 @@ $:remember.render()
 <br>
 <h2>See how others remember Harambe.</h2>
 <ul>
-$for entry in table:
-	<li>$entry.message</li>
+	$for p in another_list:
+		<div class="memories"><li>$p</li></div>
 </ul>	
 
