@@ -4,14 +4,11 @@ $def with (remember, another_list)
 
 <form name="remember" method="post">
 $:remember.render()
-<input type="submit"/>
+<input value="Remember" type="submit"/>
 </form>
 
 <hr>
 <br>
 <h2>See how others remember Harambe.</h2>
-<ul>
-	$for p in another_list:
-		<div class="memories"><li>$p</li></div>
-</ul>	
-
+$for p in another_list:
+	<div class="memories">$p</div>
