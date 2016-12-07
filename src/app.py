@@ -65,13 +65,16 @@ class memories:
 				bad_message=True
 				break
 		
-		if not bad_message:
+		if bad_message:
+			print "BAD MESSAGE\n\t" + comment
+		elif len(comment) < 2:
+			print "Empty Message"
+		else:
 			table = db.select('memories')
 			date = time.strftime('%Y-%m-%d %X')
 			n = db.insert('memories', time=date,name='n/a',message=comment)
 			print comment
-		else:
-			print "BAD MESSAGE\n\t" + comment
+
 		raise web.seeother('/memories.html')
 	
 
