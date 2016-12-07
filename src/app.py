@@ -16,7 +16,14 @@ urls = (
 	'/','index', '/about.html', 'about', '/memories.html', 'memories'
 )
 
-db = web.database(dbn='mysql', user='harambe', pw='love', db='harambe')
+mysql_login = []
+login_credentials = open('mysql_login','r')
+for line in login_credentials:
+	mysql_login.append[line]
+
+#login_credentials => username\npassword\ndatabase_name
+db = web.database(dbn='mysql', user=mysql_login[0], pw=mysql_login[1], db=mysql_login[2])
+
 
 app = web.application(urls, globals())
 
