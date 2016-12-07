@@ -1,1 +1,2 @@
-*.pyc
+src/app.pyc
+mysql_login
