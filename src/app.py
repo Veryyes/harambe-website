@@ -3,6 +3,13 @@ from web import form
 import time
 import urllib
 
+def bad_words():
+	bad_words = []
+	f = open('profanity.txt', 'r')
+	for line in f:
+		bad_words.append(line.strip())
+	return bad_words
+
 render = web.template.render('templates/', base='layout')
 
 urls = (
@@ -16,6 +23,8 @@ app = web.application(urls, globals())
 entry = form.Form(
 	form.Textarea("message"),
 )
+
+bad_words = bad_words()
 
 class index:
 	def GET(self):
@@ -47,17 +56,24 @@ class memories:
 	def POST(self):
 		
 		remember = entry()
-		comment = web.data()[8:]
-		print comment
-		comment = comment.replace('+',' ')
-		print comment
-		comment = urllib.unquote(comment).decode('ascii')
-		print comment
-		table = db.select('memories')
-		date = time.strftime('%Y-%m-%d %X')
-		n = db.insert('memories', time=date,name='n/a',message=comment)
+		comment = web.data()[8:] #removes prefix
+		comment = comment.replace('+',' ') 
+		comment = urllib.unquote(comment).decode('ascii')#parses message
+		bad_message = False
+		for bad in bad_words:
+			if bad in comment.lower():
+				bad_message=True
+				break
+		
+		if not bad_message:
+			table = db.select('memories')
+			date = time.strftime('%Y-%m-%d %X')
+			n = db.insert('memories', time=date,name='n/a',message=comment)
+			print comment
+		else:
+			print "BAD MESSAGE\n\t" + comment
 		raise web.seeother('/memories.html')
-		#return render.memories(remember, table)
+	
 
 if __name__=="__main__":
 	app.run()
