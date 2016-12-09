@@ -72,15 +72,18 @@ class memories:
 				bad_message=True
 				break
 		
+		date = time.strftime('%Y-%m-%d %X')
+		ip = web.ctx.ip
+
 		if bad_message:
-			print "BAD MESSAGE\n\t" + comment
+			print "[{}] {}: Bad Word in Message: {} => skipping".format(date,ip,comment)
 		elif len(comment) < 2:
-			print "Empty Message"
+			print "[{}] {}: Empty Message => skipping".format(date,ip)
 		else:
 			table = db.select('memories')
-			date = time.strftime('%Y-%m-%d %X')
-			n = db.insert('memories', time=date,name='n/a',message=comment)
-			print comment
+			n = db.insert('memories', time=date, name=ip, message=comment)
+			print "[{}] {}: Message: {}".format(date,ip,comment)
+
 
 		raise web.seeother('/memories.html')
 	
