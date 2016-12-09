@@ -19,7 +19,7 @@ urls = (
 mysql_login = []
 login_credentials = open('mysql_login','r')
 for line in login_credentials:
-	mysql_login.append(line)
+	mysql_login.append(line.strip())
 
 #login_credentials => username\npassword\ndatabase_name
 db = web.database(dbn='mysql', user=mysql_login[0], pw=mysql_login[1], db=mysql_login[2])
@@ -61,17 +61,17 @@ class memories:
 
 
 	def POST(self):
-		
+
 		remember = entry()
 		comment = web.data()[8:] #removes prefix
-		comment = comment.replace('+',' ') 
+		comment = comment.replace('+',' ')
 		comment = urllib.unquote(comment).decode('ascii')#parses message
 		bad_message = False
 		for bad in bad_words:
 			if bad in comment.lower():
 				bad_message=True
 				break
-		
+
 		if bad_message:
 			print "BAD MESSAGE\n\t" + comment
 		elif len(comment) < 2:
@@ -83,7 +83,7 @@ class memories:
 			print comment
 
 		raise web.seeother('/memories.html')
-	
+
 
 if __name__=="__main__":
 	app.run()
