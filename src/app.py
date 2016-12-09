@@ -61,17 +61,17 @@ class memories:
 
 
 	def POST(self):
-		
+
 		remember = entry()
 		comment = web.data()[8:] #removes prefix
-		comment = comment.replace('+',' ') 
+		comment = comment.replace('+',' ')
 		comment = urllib.unquote(comment).decode('ascii')#parses message
 		bad_message = False
 		for bad in bad_words:
 			if bad in comment.lower():
 				bad_message=True
 				break
-		
+				
 		date = time.strftime('%Y-%m-%d %X')
 		ip = web.ctx.ip
 
@@ -79,7 +79,7 @@ class memories:
 			print "[{}] {}: Bad Word in Message: {} => skipping".format(date,ip,comment)
 		elif len(comment) < 2:
 			print "[{}] {}: Empty Message => skipping".format(date,ip)
-		else:	
+		else:
 			#Calculate the struct_time representing 1 minute ago
 			minute_ago = time.strftime('%Y-%m-%d %X',time.localtime(time.time()-60))
 			#Querying the data by the user starting from 1 minute ago
@@ -92,6 +92,7 @@ class memories:
 				print "[{}] {}: User Spamming".format(date, ip)
 
 		raise web.seeother('/memories.html')
+
 	#4 posts per min
 
 if __name__=="__main__":
