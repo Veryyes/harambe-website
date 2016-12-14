@@ -56,15 +56,15 @@ td {
 
 textarea {
   font-family: Patua One;
-  width: 50em;
-  height: 10em;
+  width: auto;
+  height: auto;
   margin-left: -0.2em;
   resize: none;
 }
 
 input[type=submit] {
   color: black;
-  padding: 1em;
+  padding: 0.5em;
   font-family: Patua One;
   border: 0.2em solid black;
   transition: 0.1s;
@@ -78,7 +78,24 @@ input[type=submit]:hover {
 .memories{
   padding: 1em;
   margin: 0.5em;
-  box-shadow: 0 0 10px #333;
+  box-shadow: 0 0 10px #999;
+
+  animation-name: loadMemories;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.6s;
+}
+
+@keyframes loadMemories {
+  from {
+    box-shadow: 0 0 0 #000;
+    opacity: 0;
+    animation-delay: 0.5s;
+  }
+  to {
+    box-shadow: 0 0 10px #999;
+    opacity: 100;
+  }
 }
 
 footer {
