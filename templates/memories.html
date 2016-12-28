@@ -9,6 +9,10 @@ $:remember.render()
 
 <hr>
 <br>
-<h2>See how others remember Harambe.</h2>
+<h2 id="all">See how others remember Harambe.</h2>
 $for p in another_list:
 	<div class="memories">$p</div>
+<br>
+<form action="http://www.wongbrandon.com/all-memories.html#all"  method="GET">
+<input value="See More" type="submit"/>
+</form>

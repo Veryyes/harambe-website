@@ -13,7 +13,7 @@ def bad_words():
 render = web.template.render('templates/', base='layout')
 
 urls = (
-	'/','index', '/about.html', 'about', '/memories.html', 'memories'
+	'/','index', '/about.html', 'about', '/memories.html', 'memories', '/all-memories.html', 'all_memories'
 )
 
 mysql_login = []
@@ -28,7 +28,7 @@ db = web.database(dbn='mysql', user=mysql_login[0], pw=mysql_login[1], db=mysql_
 app = web.application(urls, globals())
 
 entry = form.Form(
-	form.Textarea("message"),
+	form.Textarea("message")
 )
 
 bad_words = bad_words()
@@ -40,6 +40,18 @@ class index:
 class about:
 	def GET(self):
 		return render.about()
+
+class all_memories:
+	def GET(self):
+		table = db.select('memories')
+		remember = entry()
+		len_table = len(table)
+		posts = []
+		i = 0
+		for p in table:
+			posts.append(p.message)
+		posts.reverse()
+		return render.memories(remember, posts)
 
 class memories:
 	def GET(self):
