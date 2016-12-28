@@ -2,13 +2,13 @@ $def with (remember, another_list)
 <h1 style="text-align: center">We remember Harambe</h1>
 <h2>Tell us how <u>you</u> remember Harambe.</h2>
 
-<form name="remember" method="post">
+<form name="remember" method="post" action="javascript:play()" >
 $:remember.render()
 <input value="Remember" type="submit"/>
 </form>
-
 <hr>
 <br>
+
 <h2 id="all">See how others remember Harambe.</h2>
 $for p in another_list:
 	<div class="memories">$p</div>
@@ -16,3 +16,12 @@ $for p in another_list:
 <form action="http://www.wongbrandon.com/all-memories.html#all"  method="GET">
 <input value="See More" type="submit"/>
 </form>
+
+<audio id="sound" src="/static/sounds/Thanks.ogg"></audio>
+
+<script>
+	var audio = document.getElementById("sound")
+	function play(){
+		audio.play()
+	}
+</script>

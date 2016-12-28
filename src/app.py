@@ -10,6 +10,10 @@ def bad_words():
 		bad_words.append(line.strip())
 	return bad_words
 
+def load_sounds():
+	sounds = []
+		
+
 render = web.template.render('templates/', base='layout')
 
 urls = (
