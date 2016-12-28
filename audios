@@ -1,22 +1,3 @@
-$def with (remember, another_list)
-<h1 style="text-align: center">We remember Harambe</h1>
-<h2>Tell us how <u>you</u> remember Harambe.</h2>
-
-<form name="remember" method="post" action="javascript:play()" >
-$:remember.render()
-<input value="Remember" type="submit"/>
-</form>
-<hr>
-<br>
-
-<h2 id="all">See how others remember Harambe.</h2>
-$for p in another_list:
-	<div class="memories">$p</div>
-<br>
-<form action="http://www.wongbrandon.com/all-memories.html#all"  method="GET">
-<input value="See More" type="submit"/>
-</form>
-
 <audio id="sound0" src="/static/sounds/Did_someone_say_peanut_butter.ogg"></audio>
 <audio id="sound1" src="/static/sounds/Empirical_evidence_suggests_I'm_a_real_animal.ogg"></audio>
 <audio id="sound2" src="/static/sounds/For_the_last_time,_no_more_bananas!.ogg"></audio>
@@ -30,16 +11,3 @@ $for p in another_list:
 <audio id="sound10" src="/static/sounds/Thanks.ogg"></audio>
 <audio id="sound11" src="/static/sounds/The_power_of_science!.ogg"></audio>
 <audio id="sound12" src="/static/sounds/Turret_ahead,_use_caution.ogg"></audio>
-
-
-<script>
-	var audio = []
-	var i	
-	for(i=0;i<12;i++){
-		audio.push(document.getElementById("sound"+i))
-	}
-	function play(){
-		var rand = Math.floor(Math.random()*13)
-		audio[rand].play()
-	}
-</script>
